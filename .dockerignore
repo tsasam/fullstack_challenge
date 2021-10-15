@@ -1,0 +1,10 @@
+.git
+vendor/
+node_modules/
+run.sh
+bash.sh
+
+# This will be mounted from the host so we can use hot reload
+app/Http/Controllers
+public
+resources
