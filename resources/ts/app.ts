@@ -6,9 +6,9 @@ import './bootstrap.ts';
 
 import Vue from 'vue';
 
-import SamplesMainVue from './vue/samples/main.vue';
+import MainVue from './vue/main.vue';
 
-Vue.component('samples-main-vue', SamplesMainVue);
+Vue.component('main-vue', MainVue);
 
 
 new Vue({

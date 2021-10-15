@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/**
+ * Routes for samples
+ */
+Route::get('/samples', 'BiomeController@listSamples');
+
+/**
+ * Routes for organisms
+ */
+Route::post('/organisms', 'BiomeController@newOrganism');
+Route::get('/organisms', 'BiomeController@listOrganisms');
+Route::get('/organisms-top10', 'BiomeController@listOrganismsTop10');
+

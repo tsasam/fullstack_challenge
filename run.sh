@@ -4,7 +4,10 @@ DOCKER_UID=$(id -u)
 DOCKER_GID=$(id -g)
 
 
-echo "Running BiomeMakers Test Portal"
+echo "****************************************"
+echo "* Running BiomeMakers Challenge Portal *"
+echo "****************************************"
+echo
 echo "This will build a docker with php + laravel + nodejs + typescript + postgresql"
 echo "It may take a while the first time"
 echo "It needs the ports 8000, 8001, 8002"
@@ -13,16 +16,16 @@ echo "The javascript/css hot reload uses port 8001"
 echo "Postgresql database uses port 8002"
 echo ""
 
+mkdir -p vendor
+mkdir -p node_modules
+
 docker run \
-    --name biomemakers_test \
+    --name biomemakers_challenge \
     --rm \
     -it \
-    --mount type=bind,src="$(pwd)/app",dst=/app/app \
-    --mount type=bind,src="$(pwd)/config",dst=/app/config \
-    --mount type=bind,src="$(pwd)/database",dst=/app/database \
-    --mount type=bind,src="$(pwd)/public",dst=/app/public \
-    --mount type=bind,src="$(pwd)/resources",dst=/app/resources \
-    --mount type=bind,src="$(pwd)/storage/app",dst=/app/storage/app \
+    --mount type=bind,src="$(pwd)/",dst=/app \
+    --mount type=volume,target=/app/storage/framework \
+    --mount type=volume,target=/app/storage/logs \
     -p 8000:8000 \
     -p 8001:8001 \
     -p 8002:5432 \

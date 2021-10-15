@@ -4,16 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>BiomeMakers Challenge</title>
 
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-    
 
     </head>
     <body >
     
         <div id="app">
-            <samples-main-vue></samples-main-vue>
+            <main-vue></main-vue>
         </div>
 
         <script src="{{ mix('/js/app.js') }}"></script>

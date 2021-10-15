@@ -40,7 +40,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
 RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -  && \
     apt-get update && \
-    apt-get -y install postgresql-12
+    apt-get -y install postgresql-12 && \
+    # Enable to also connect from the host
+    echo "listen_addresses = '*'" >> /etc/postgresql/12/main/postgresql.conf && \
+    echo "host  all  all 0.0.0.0/0 md5" >> /etc/postgresql/12/main/pg_hba.conf
 
 # Configure postgresql
 RUN service postgresql start && \
@@ -67,15 +70,6 @@ RUN groupadd -g ${DOCKER_GID} biome && \
 USER biome
 WORKDIR /app
 
-#
-# Copy all files into the app
-#
 COPY --chown=biome . /app
-
-#
-# Run composer (php) and npm (nodejs) to install all the vendor and node_modules 
-#
-RUN composer install && \
-    npm ci
 
 CMD ["./run_all_docker_services.sh"]

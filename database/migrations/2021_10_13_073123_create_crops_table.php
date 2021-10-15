@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSamples extends Migration
+class CreateCropsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSamples extends Migration
      */
     public function up()
     {
-        Schema::create('samples', function (Blueprint $table) {
+        Schema::create('crops', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10);
-            $table->foreignId('crop_id')->constrained();
+            $table->string('name', 50);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSamples extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('samples');
+        Schema::dropIfExists('crops');
     }
 }

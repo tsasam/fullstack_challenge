@@ -2,7 +2,11 @@
 
 sudo service postgresql start
 
+composer install
+
 php artisan migrate
+
+php artisan db:seed
 
 npm ci
 
