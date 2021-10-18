@@ -1,12 +1,17 @@
-h
+
 # BiomeMakers FullStack Challenge
 
 ## Introduction
 
 In BiomeMakers we combine DNA sequencing, AI and AgData to identify
 the microbial biomarkers providing insights to optimize the health of any crop.
+The IT and Software department mission is to build the different Portals
+to allow our clients to access their sample reports.
+Moreover, we create internal tools for the other departments
+(laboratory, bio-informatics, customer service, finance...)
+to control the sample process and communicate with the clients. 
 
-This repository contains a simulated portal with all the tecnology use
+This repository contains a simulated portal with all the technology use
 use on daily basics:
 * Docker
 * PHP
@@ -27,19 +32,25 @@ We value you time so do not take more than **1 hour** to complete it.
 ## Usage
 
 All the software has been prepared inside a docker container so you 
-**DO NOT NEED** to install anything except docker.
+**DO NOT NEED** to install anything except docker
+and an IDE (we recommend Visual Studio Code).
 The container will have the laravel server, a postgresql instance,
 and a hot reloader webpack.
 You need to ensure that the ports `8000`, `8001` and `8002`
 are not being used.
 
-To use it just execute `./run.sh` and enter `http://localhost:8000`
+To use it just execute `./run.sh` and navigate to `http://localhost:8000`
 
-While the container is running you can use these commands:
+The run command will take several minutes to complete the first time
+it is executed because it has to create the full docker container. 
+
+While the container is running you can use these commands
+(not really needed until you want to use the artisan command
+or run some SQL directly):
 * `bash.sh`: Open a bash terminal in the container
 * `psql.sh`: Open a sql terminal in the postgreSQL server
 
-Note that the DB and the sessions are not persisten because they
+Note that the DB and the sessions are not persistent because they
 are destroyed then the container ends.
 
 ## Description of the data model
@@ -67,7 +78,7 @@ The main page at `http://localhost:8000` will look like this:
 
 The other tables in the DB (`samples`, `organisms`, `abundances`)
 have its correspondent laravel model, the model for the `crop`
-table is missing although it exists in the DB and have rows of data.
+table is missing although the table itself exists in the DB and have data.
 
 * Create the `app/Models/Crop` class
 * Create the relation `crop` in the `app/Models/Sample` model
@@ -91,7 +102,7 @@ table is missing although it exists in the DB and have rows of data.
 ### 4. Complete the endpoint `organisms-top10`
 
 * This endpoint should return the top 10 most common organisms 
-by the number of samples they appear)
+by the number of samples they appear
 * Include the number of samples where they appear
 * **[EXTRA]** Include the 3 most common crops for those organisms
 
@@ -119,4 +130,4 @@ and they are removed with it.
 * Port 8000 is used for the web server
 * Port 8001 is used for the hot reloader of webpack
 * Port 8002 is used for the PostgreSQL database.
-In case you want to connect from outside the dbname/user/password is all `biome`. You can use the `psql.sh` script which is is simplier.
+In case you want to connect from outside the dbname/user/password is all `biome`. You can use the `psql.sh` script which is is simpler.
