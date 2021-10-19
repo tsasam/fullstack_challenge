@@ -27,7 +27,7 @@ and coding proficiency.
 
 Feel free to complete any of the challenges
 (you could add extra functionality if there is some skill you want to show us).
-We value you time so do not take more than **1 hour** to complete it.
+We value your time so do not take more than **1 hour** to complete it.
 
 ## Usage
 
@@ -41,7 +41,7 @@ are not being used.
 
 To use it just execute `./run.sh` and navigate to `http://localhost:8000`
 
-The run command will take several minutes to complete the first time
+The run command will take several minutes (around 5 minutes) to complete the first time
 it is executed because it has to create the full docker container. 
 
 While the container is running you can use these commands
