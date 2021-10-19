@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
             ->count(100)
             ->create();
 
-        DB::table('crops')->insert(
+        DB::table('crops')->insert([
             ['name' => 'Apple'],
             ['name' => 'Tomato'],
             ['name' => 'Corn'],
             ['name' => 'Rice'],
-            ['name' => 'Cotton'],
+            ['name' => 'Cotton']]
         );
             
         Sample::factory()
