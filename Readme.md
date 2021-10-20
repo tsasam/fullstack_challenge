@@ -27,7 +27,7 @@ and coding proficiency.
 
 Feel free to complete any of the challenges
 (you could add extra functionality if there is some skill you want to show us).
-We value your time so do not take more than **1 hour** to complete it.
+We value your time so this challenge should take about **1 hour** to complete it.
 
 ## Usage
 
