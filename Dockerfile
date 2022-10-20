@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install \
     zip \
     pdo \
-    pdo_pgsql 
+    pdo_pgsql
 
 #
 # Composer
@@ -53,12 +53,12 @@ RUN service postgresql start && \
 
 #
 # Arguments for the UID and GID, to run the docker with the same host user:gropu
-# 
+#
 ARG DOCKER_UID
 ARG DOCKER_GID
 
 # Create a user biome with group biome
-RUN groupadd -g ${DOCKER_GID} biome && \
+RUN groupadd -o -g ${DOCKER_GID} biome && \
     useradd -r -u ${DOCKER_UID} --create-home -g biome biome && \
     # biome user can use sudo
     echo "biome ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
