@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SampleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /**
  * Routes for samples
  */
-Route::get('/samples', 'BiomeController@listSamples');
+Route::get('/samples', [SampleController::class,'listSamples']);
 
 /**
  * Routes for organisms
