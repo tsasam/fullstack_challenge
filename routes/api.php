@@ -29,7 +29,6 @@ Route::get('/samples', [SampleController::class,'listSamples']);
  * Routes for organisms
  */
 Route::post('/new-organisms', [OrganismController::class,'newOrganism']);
-//Route::post('/organisms', 'BiomeController@newOrganism');
-Route::get('/organisms', 'BiomeController@listOrganisms');
+Route::get('/organisms', [OrganismController::class,'organisms']);
 Route::get('/organisms-top10', 'BiomeController@listOrganismsTop10');
 

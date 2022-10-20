@@ -14,7 +14,7 @@
            </tr>
            </thead>
            <tbody>
-           <tr v-for="organism of organisms" :key="organism.id">
+           <tr v-for="organism in organisms" :key="organism.id">
                <td>{{ organism.id }}</td>
                <td>{{ organism.genus }}</td>
                <td>{{ organism.species }}</td>

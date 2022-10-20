@@ -7,25 +7,34 @@ use App\Http\Requests\NewOrganismPostRequest;
 
 class OrganismService
 {
-    private NewOrganismPostRequest $request;
     private OrganismRepository $organismRepository;
 
     /**
      * @param NewOrganismPostRequest $request
      * @param OrganismRepository $organismRepository
      */
-    public function __construct(NewOrganismPostRequest $request, OrganismRepository $organismRepository)
+    public function __construct( OrganismRepository $organismRepository)
     {
-        $this->request = $request;
         $this->organismRepository = $organismRepository;
     }
 
     /**
      * Call the organism repository
+     * @param $request
      * @return void
      */
-    public function createNewOrganism(): void
+    public function createNewOrganism($request): void
     {
-         $this->organismRepository->saveNewOrganism($this->request);
+         $this->organismRepository->saveNewOrganism($request);
+    }
+
+
+    /**
+     * Return a list of organisms
+     * @return mixed
+     */
+    public function retrieveOrganisms(): mixed
+    {
+        return  $this->organismRepository->getOrganisms();
     }
 }
