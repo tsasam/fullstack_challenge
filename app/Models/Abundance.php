@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 class Abundance extends Model
 {
 
+    const ABUNDANCES_COUNT = 'abundances_count';
+
     public function sample(){
         return $this->belongsTo(Sample::class);
     }

@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\DB;
 class BiomeController extends Controller
 {
 
-
     /**
      * Returns a list of samples
      */
@@ -41,7 +40,7 @@ class BiomeController extends Controller
     }
 
     /**
-     * Returns a paginated list of organisms 
+     * Returns a paginated list of organisms
      */
     public function listOrganisms(){
         return Organism::paginate(10);
@@ -60,7 +59,5 @@ class BiomeController extends Controller
         return DB::select("
             select * from organisms
         ");
-        
     }
-
 }

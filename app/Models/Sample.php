@@ -14,6 +14,12 @@ class Sample extends Model
 {
     use HasFactory;
 
+    const ID = 'id';
+    const CODE = 'code';
+    const CROP_ID = 'crop_id';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
     /**
      * Relation with abundances
      * @return HasMany
@@ -25,9 +31,9 @@ class Sample extends Model
 
     /**
      * Relation with crops
-     * @return BelongsTo
+     * @return
      */
-    public function crop(): BelongsTo
+    public function crop()
     {
         return $this->belongsTo(Crop::class);
     }
