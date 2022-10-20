@@ -13,4 +13,18 @@ use Illuminate\Database\Eloquent\Model;
 class Organism extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = self::TABLE;
+
+    public const TABLE = 'organisms';
+
+
+    const ID = 'id';
+    const GENUS = 'genus';
+    const SPECIES = 'species';
 }
