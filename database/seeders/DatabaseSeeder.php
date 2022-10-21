@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Abundance;
+use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Organism;
@@ -18,7 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
 
         Organism::factory()
             ->count(100)
@@ -31,7 +33,9 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Rice'],
             ['name' => 'Cotton']]
         );
-            
+
+        User::factory(10)->create();
+
         Sample::factory()
             ->count(20)
             ->create()->each(function($sample) use ($faker) {
