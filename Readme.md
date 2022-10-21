@@ -53,7 +53,7 @@ or run some SQL directly):
 Note that the DB and the sessions are not persistent because they
 are destroyed then the container ends.
 ## Testing
-I addded some basic tests in the project. You can run them connecting to the bas terminal:
+I addded some basic tests in the project. You can run them connecting to the bash terminal:
 * `bash.sh`: Open a bash terminal in the container
 
 Then running the command inside the container:
