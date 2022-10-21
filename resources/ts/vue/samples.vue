@@ -16,8 +16,8 @@
                     <td>{{ sample.code }}</td>
                     <td>{{ sample.abundances_count }}</td>
                     <td>{{ sample.name }}</td>
-                    <td></td>
                 </tr>
+            <!--Load here the Organism component instead of the logic -->
             </tbody>
         </table>
 

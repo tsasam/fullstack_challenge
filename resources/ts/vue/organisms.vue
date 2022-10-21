@@ -18,7 +18,6 @@
                <td>{{ organism.id }}</td>
                <td>{{ organism.genus }}</td>
                <td>{{ organism.species }}</td>
-               <td></td>
            </tr>
            </tbody>
        </table>
@@ -49,6 +48,7 @@ type OrganismsT = {
 
 import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import axios from 'axios';
+import OrganismVue from "./organism.vue";
 
 
 @Component({})
@@ -62,10 +62,19 @@ export default class OrganismsVue extends Vue {
     }
 
     /**
-     * Receive the organisms from the api endpoint
+     * Receive the organisms from the api endpoint (paginated)
      */
     async loadOrganisms(){
-        this.organisms = (await axios.get('/api/organisms/')).data.data;
+        let organismsData = (await axios.get('/api/organisms/')).data.data;
+
+        /**
+         * if there is still datas in the call (paginated), we continue to retrieve them
+         */
+        while(organismsData.next_page_url){
+            this.organisms.push(...organismsData)
+            organismsData = (await axios.get(organismsData.next_page_url)).data
+        }
+        this.organisms.push(...organismsData)
     }
 
 }
