@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrganismController;
+use App\Http\Controllers\SampleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,20 +16,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('me', [LoginController::class, 'me']);
 });
-
 /**
  * Routes for samples
  */
-Route::get('/samples', 'BiomeController@listSamples');
+Route::get('/samples', [SampleController::class,'listSamples']);
 
 /**
  * Routes for organisms
  */
-Route::post('/organisms', 'BiomeController@newOrganism');
-Route::get('/organisms', 'BiomeController@listOrganisms');
-Route::get('/organisms-top10', 'BiomeController@listOrganismsTop10');
+Route::post('/new-organisms', [OrganismController::class,'newOrganism']);
+Route::get('/organisms', [OrganismController::class,'organisms']);
+Route::get('/organisms-top10', [OrganismController::class,'organismsTop10']);
+
+
 

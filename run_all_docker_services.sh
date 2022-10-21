@@ -4,6 +4,8 @@ sudo service postgresql start
 
 composer install
 
+composer update
+
 php artisan migrate
 
 php artisan db:seed
