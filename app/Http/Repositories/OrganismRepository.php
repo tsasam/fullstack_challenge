@@ -3,8 +3,10 @@
 namespace App\Http\Repositories;
 
 use App\Http\Requests\NewOrganismPostRequest;
+use App\Models\Abundance;
 use App\Models\Organism;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class OrganismRepository
@@ -33,4 +35,28 @@ class OrganismRepository
     {
         return Organism::paginate(10);
     }
+
+    /**
+     * Create top 10 of organisms
+     * @return array|Collection
+     */
+    public function getTop10Organisms(): array|Collection
+    {
+        return Organism::query()
+            ->select(
+                Organism::TABLE . '.' . Organism::GENUS,
+                Organism::TABLE . '.' . Organism::SPECIES,
+            )
+            ->selectRaw('count (abundances.sample_id) as total_samples')
+            ->join(Abundance::TABLE, Abundance::TABLE . '.' . Abundance::ORGANISM_ID,
+                '=',
+                Organism::TABLE . '.' . Organism::ID
+            )
+            ->groupBy([Organism::GENUS,Organism::SPECIES ])
+            ->orderByDesc('total_samples')
+            ->limit(10)
+            ->get();
+    }
+
+
 }
