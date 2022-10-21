@@ -52,7 +52,14 @@ or run some SQL directly):
 
 Note that the DB and the sessions are not persistent because they
 are destroyed then the container ends.
+## Testing
+I addded some basic tests in the project. You can run them connecting to the bas terminal:
+* `bash.sh`: Open a bash terminal in the container
 
+Then running the command inside the container:
+```console
+docker@biome:~$ php artisan test
+```
 ## Description of the data model
 
 The DB will contain a small version of the entities we work with in BiomeMakers.
