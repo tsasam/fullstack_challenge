@@ -1,4 +1,4 @@
-FROM php:8.0-cli
+FROM php:8.1-cli
 
 LABEL org.opencontainers.image.authors="javier@biomemakers.com"
 
